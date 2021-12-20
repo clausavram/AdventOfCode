@@ -6,7 +6,7 @@ class Day1
 
 fun main() {
     val lines = File(Day1::class.java.getResource("day1.input.txt")!!.toURI()).readLines()
-    val numbers = lines.map { Integer.valueOf(it) }
+    val numbers = lines.map { it.toInt() }
     partOne(numbers)
     partTwo(numbers)
 }
