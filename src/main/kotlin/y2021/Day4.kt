@@ -1,6 +1,7 @@
 package y2021
 
-import java.io.File
+import util.FileType
+import util.getFile
 import java.util.*
 
 class Day4
@@ -54,7 +55,7 @@ class Board(private val grid: Array<IntArray>) {
 }
 
 fun main() {
-    val lines = LinkedList(File(Day4::class.java.getResource("day4.input.txt")!!.toURI()).readLines())
+    val lines = LinkedList(getFile(Day4::class, FileType.INPUT).readLines())
     val drawnNumbers = lines.removeFirst()
         .split(",")
         .map { it.toInt() }

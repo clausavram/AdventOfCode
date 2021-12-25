@@ -1,12 +1,13 @@
 package y2021
 
-import java.io.File
+import util.FileType
+import util.getFile
 import kotlin.math.pow
 
 class Day3
 
 fun main() {
-    val lines = File(Day3::class.java.getResource("day3.input.txt")!!.toURI()).readLines()
+    val lines = getFile(Day3::class, FileType.INPUT).readLines()
 
     partOne(lines)
     partTwo(lines)

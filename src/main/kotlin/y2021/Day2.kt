@@ -1,12 +1,13 @@
 package y2021
 
-import java.io.File
+import util.FileType
+import util.getFile
 import java.util.regex.Pattern
 
 class Day2
 
 fun main() {
-    val lines = File(Day2::class.java.getResource("day2.input.txt")!!.toURI()).readLines()
+    val lines = getFile(Day2::class, FileType.INPUT).readLines()
     partOne(lines)
     partTwo(lines)
 }

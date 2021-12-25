@@ -1,6 +1,7 @@
 package y2021
 
-import java.io.File
+import util.FileType
+import util.getFile
 import kotlin.math.sign
 
 class Day5
@@ -19,7 +20,7 @@ data class Segment(val start: Point, val end: Point) {
 }
 
 fun main() {
-    val lines = File(Day5::class.java.getResource("day5.input.txt")!!.toURI()).readLines()
+    val lines = getFile(Day5::class, FileType.INPUT).readLines()
     val regex = Regex("""(\d+),(\d+) -> (\d+),(\d+)""")
     val segments = lines.map {
         val (x1, y1, x2, y2) = regex.find(it)!!.destructured

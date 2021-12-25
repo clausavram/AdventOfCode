@@ -1,11 +1,12 @@
 package y2021
 
-import java.io.File
+import util.FileType
+import util.getFile
 
 class Day1
 
 fun main() {
-    val lines = File(Day1::class.java.getResource("day1.input.txt")!!.toURI()).readLines()
+    val lines = getFile(Day1::class, FileType.INPUT).readLines()
     val numbers = lines.map { it.toInt() }
     partOne(numbers)
     partTwo(numbers)
@@ -20,7 +21,7 @@ private fun partOne(numbers: List<Int>) {
         }
         prevNumber = number
     }
-    println("Depth increases: $depthIncreases")
+    println("Part 1: Depth increases: $depthIncreases")
 }
 
 private fun partTwo(numbers: List<Int>) {
@@ -33,5 +34,5 @@ private fun partTwo(numbers: List<Int>) {
         }
         prevSum = crtSum
     }
-    println("3-measurement sliding window depth increases: $depthIncreases")
+    println("Part 2: 3-measurement sliding window depth increases: $depthIncreases")
 }
