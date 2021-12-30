@@ -6,13 +6,13 @@ import kotlin.math.sign
 
 class Day5
 
-data class Point(val x: Int, val y: Int) {
+private data class Point(val x: Int, val y: Int) {
     operator fun plus(that: Point) = Point(this.x + that.x, this.y + that.y)
     operator fun minus(that: Point) = Point(this.x - that.x, this.y - that.y)
     override fun toString(): String = "($x,$y)"
 }
 
-data class Segment(val start: Point, val end: Point) {
+private data class Segment(val start: Point, val end: Point) {
     constructor(start: Pair<Int, Int>, end: Pair<Int, Int>) : this(Point(start.first, start.second), Point(end.first, end.second))
 
     val vector = end - start

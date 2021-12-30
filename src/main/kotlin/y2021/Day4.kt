@@ -6,10 +6,10 @@ import java.util.*
 
 class Day4
 
-const val BOARD_SIZE = 5
-val SEPARATOR_PATTERN = Regex(" +")
+private const val BOARD_SIZE = 5
+private val SEPARATOR_PATTERN = Regex(" +")
 
-class Board(private val grid: Array<IntArray>) {
+private class Board(private val grid: Array<IntArray>) {
     private val unmarkedCountPerRow = IntArray(BOARD_SIZE) { BOARD_SIZE }
     private val unmarkedCountColumn = IntArray(BOARD_SIZE) { BOARD_SIZE }
     private val unmarkedNumbers = grid.flatMap { it.asSequence() }.toMutableSet()

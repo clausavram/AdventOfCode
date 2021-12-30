@@ -6,8 +6,8 @@ import java.util.*
 
 class Day6
 
-const val DAYS_TO_SIMULATE_PART_1 = 80
-const val DAYS_TO_SIMULATE_PART_2 = 256
+private const val DAYS_TO_SIMULATE_PART_1 = 80
+private const val DAYS_TO_SIMULATE_PART_2 = 256
 
 fun main() {
     val initialFishSchool = getFile(Day6::class, FileType.INPUT).readText()
@@ -42,7 +42,7 @@ private fun partTwo(initialProcreationPeriods: List<Int>) {
     println("Part 2: Fish count on day $DAYS_TO_SIMULATE_PART_2: ${fishSchool.totalFishCount}")
 }
 
-class FishSchool(initialProcreationPeriods: List<Int>) {
+private class FishSchool(initialProcreationPeriods: List<Int>) {
     /**
      * - value = how many fish there are in the group
      * - index = how many day there still are to them giving birth
