@@ -5,7 +5,7 @@ import kotlin.reflect.KClass
 
 @Suppress("unused")
 enum class FileType {
-    EXAMPLE, INPUT, SMALL_SAMPLE;
+    EXAMPLE, INPUT, EXAMPLE2, EXAMPLE3;
 
     override fun toString() = super.toString().lowercase()
 }
