@@ -8,7 +8,7 @@ import kotlin.collections.LinkedHashSet
 
 class Day12
 
-class Solution(val caveLinks: MutableList<String>, var smallCaveVisitedTwice: Boolean = false)
+private class Solution(val caveLinks: MutableList<String>, var smallCaveVisitedTwice: Boolean = false)
 
 fun main() {
     val caveLinks = getFile(Day12::class, FileType.INPUT).readLines().map { val nodes = it.split('-', limit = 2); nodes[0] to nodes[1] }
