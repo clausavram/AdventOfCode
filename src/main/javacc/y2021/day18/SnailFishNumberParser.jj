@@ -1,0 +1,79 @@
+options {
+  LOOKAHEAD = 1;
+  CHOICE_AMBIGUITY_CHECK = 2;
+  OTHER_AMBIGUITY_CHECK = 1;
+  STATIC = false;
+  DEBUG_PARSER = false;
+  DEBUG_LOOKAHEAD = false;
+  DEBUG_TOKEN_MANAGER = false;
+  ERROR_REPORTING = true;
+  JAVA_UNICODE_ESCAPE = false;
+  UNICODE_INPUT = false;
+  IGNORE_CASE = false;
+  USER_TOKEN_MANAGER = false;
+  USER_CHAR_STREAM = false;
+  BUILD_PARSER = true;
+  BUILD_TOKEN_MANAGER = true;
+  SANITY_CHECK = true;
+  FORCE_LA_CHECK = false;
+}
+
+PARSER_BEGIN(SnailFishNumberParser)
+
+package y2021.day18;
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
+import y2021.PairNumber;
+import y2021.SimpleNumber;import y2021.SnailFishNumber;
+
+public class SnailFishNumberParser {
+
+    public static void main(String[] args) {
+        SnailFishNumberParser parser = new SnailFishNumberParser(new ByteArrayInputStream("[1,[2,3]]".getBytes(StandardCharsets.UTF_8)));
+        System.out.println(parser.PairNumber());
+    }
+    
+    public static PairNumber parseString(String input) {
+        return new SnailFishNumberParser(new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8)))
+            .PairNumber();
+    }
+
+}
+
+PARSER_END(SnailFishNumberParser)
+
+TOKEN : {
+    < SIMPLE_NUMBER: (["0"-"9"])+ >
+}
+
+void Input() :
+{}
+{
+    PairNumber() <EOF>
+}
+
+SnailFishNumber AnyNumber() :
+{SnailFishNumber result;}
+{
+    result=PairNumber() {return result;}
+    | result=SimpleNumber() {return result;}
+}
+
+PairNumber PairNumber() :
+{SnailFishNumber left, right;}
+{
+    "[" left=AnyNumber() "," right=AnyNumber() "]"
+    {
+        PairNumber result = new PairNumber(left, right);
+        left.setParent(result);
+        right.setParent(result);
+        return result;
+    }
+}
+
+SimpleNumber SimpleNumber() :
+{Token num;}
+{
+    num=<SIMPLE_NUMBER>
+    {return new SimpleNumber(Integer.parseInt(num.image));}
+}

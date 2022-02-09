@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm") version "1.6.0"
     java
+    id("com.intershop.gradle.javacc") version "4.0.1"
 }
 
 group = "org.example"
@@ -18,4 +19,15 @@ dependencies {
 
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
+}
+
+javacc {
+    // configuration container for all javacc configurations
+    configs {
+        register("y2021day18") {
+            inputFile = file("src/main/javacc/y2021/day18/SnailFishNumberParser.jj")
+            packageName = "y2021.day18"
+            lookahead = 2
+        }
+    }
 }
