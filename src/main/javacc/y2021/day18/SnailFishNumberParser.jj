@@ -28,12 +28,12 @@ import y2021.SimpleNumber;import y2021.SnailFishNumber;
 
 public class SnailFishNumberParser {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         SnailFishNumberParser parser = new SnailFishNumberParser(new ByteArrayInputStream("[1,[2,3]]".getBytes(StandardCharsets.UTF_8)));
         System.out.println(parser.PairNumber());
     }
     
-    public static PairNumber parseString(String input) {
+    public static PairNumber parseString(String input) throws ParseException {
         return new SnailFishNumberParser(new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8)))
             .PairNumber();
     }
