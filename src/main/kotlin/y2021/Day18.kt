@@ -7,8 +7,6 @@ import y2021.day18.SnailFishNumberParser
 private const val SHOULD_LOG = false
 private fun log(str: () -> String) { if (SHOULD_LOG) println(str) }
 
-private class Day18
-
 sealed class SnailFishNumber(var parent: PairNumber?) {
     abstract fun firstSimpleNumberAboveTen(): SimpleNumber?
     abstract fun magnitude(): Int
@@ -120,7 +118,7 @@ private fun parseNumber(str: String): PairNumber {
 }
 
 fun main() {
-    val numbers = getFile(Day18::class, FileType.INPUT).readLines().map { parseNumber(it) }
+    val numbers = getFile(object{}, FileType.INPUT).readLines().map { parseNumber(it) }
     println("Part1: ${numbers.reduce(PairNumber::plus).magnitude()}")
     println("Part2: ${findAllArrangementsOfTwo(numbers).maxOf { it.first.plus(it.second).magnitude() }}")
 }

@@ -3,10 +3,8 @@ package y2021
 import util.FileType
 import util.getFile
 
-class Day1
-
 fun main() {
-    val lines = getFile(Day1::class, FileType.INPUT).readLines()
+    val lines = getFile(object{}, FileType.INPUT).readLines()
     val numbers = lines.map { it.toInt() }
     partOne(numbers)
     partTwo(numbers)

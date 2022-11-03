@@ -6,10 +6,8 @@ import java.util.stream.Collectors
 import kotlin.math.abs
 import kotlin.system.measureTimeMillis
 
-class Day7
-
 fun main() {
-    val submarinePositions = getFile(Day7::class, FileType.INPUT).readText()
+    val submarinePositions = getFile(object{}, FileType.INPUT).readText()
         .split(',')
         .map { it.toInt() }
 

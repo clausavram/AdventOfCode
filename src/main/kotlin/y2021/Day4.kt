@@ -4,8 +4,6 @@ import util.FileType
 import util.getFile
 import java.util.*
 
-class Day4
-
 private const val BOARD_SIZE = 5
 private val SEPARATOR_PATTERN = Regex(" +")
 
@@ -55,7 +53,7 @@ private class Board(private val grid: Array<IntArray>) {
 }
 
 fun main() {
-    val lines = LinkedList(getFile(Day4::class, FileType.INPUT).readLines())
+    val lines = LinkedList(getFile(object{}, FileType.INPUT).readLines())
     val drawnNumbers = lines.removeFirst()
         .split(",")
         .map { it.toInt() }

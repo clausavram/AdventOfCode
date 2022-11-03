@@ -2,10 +2,7 @@ package y2021
 
 import util.FileType
 import util.getFile
-import java.lang.AssertionError
 import java.util.*
-
-private class Day8
 
 private data class Entry(val signalPatterns: List<String>, val outputValues: List<String>)
 
@@ -29,7 +26,7 @@ fun bitSet(vararg segments: Char): BitSet {
 }
 
 fun main() {
-    val entries = getFile(Day8::class, FileType.INPUT).readLines()
+    val entries = getFile(object{}, FileType.INPUT).readLines()
         .map { it.split(" | ") }
         .map { Entry(it[0].split(' '), it[1].split(' ')) }
     

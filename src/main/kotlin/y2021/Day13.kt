@@ -4,8 +4,6 @@ import util.FileType
 import util.Point
 import util.getFile
 
-class Day13
-
 private enum class Axis { X, Y }
 private data class Fold(val axis: Axis, val coordinate: Int)
 private data class DotsAndFolds(val dots: Set<Point>, val folds: List<Fold>)
@@ -19,7 +17,7 @@ private fun Point.fold(fold: Fold): Point {
 }
 
 fun main() {
-    val dotsAndFolds = parseInput(getFile(Day13::class, FileType.INPUT).readLines())
+    val dotsAndFolds = parseInput(getFile(object{}, FileType.INPUT).readLines())
     partOne(dotsAndFolds)
     partTwo(dotsAndFolds)
 }

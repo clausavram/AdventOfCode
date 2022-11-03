@@ -5,11 +5,9 @@ import java.util.*
 import kotlin.math.abs
 import kotlin.system.measureTimeMillis
 
-class Day15
-
 fun main() {
     val riskMap = Map2D.fromListOfLists(
-        getFile(Day15::class, FileType.INPUT).readLines().map { line -> line.map { char -> char.digitToInt() } })
+        getFile(object{}, FileType.INPUT).readLines().map { line -> line.map { char -> char.digitToInt() } })
 
     println("Took ${measureTimeMillis { partOne(riskMap) }} ms")
     println("Took ${measureTimeMillis { partTwo(riskMap) }} ms")

@@ -5,11 +5,9 @@ import util.Map2D
 import util.getFile
 import java.util.*
 
-class Day11
-
 fun main() {
     val energyMap = Map2D.fromListOfLists(
-        getFile(Day11::class, FileType.INPUT).readLines().map { line -> line.map { char -> char.digitToInt() } })
+        getFile(object{}, FileType.INPUT).readLines().map { line -> line.map { char -> char.digitToInt() } })
     partOne(energyMap.copy())
     partTwo(energyMap.copy())
 }

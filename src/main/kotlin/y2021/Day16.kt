@@ -2,14 +2,11 @@ package y2021
 
 import util.FileType
 import util.getFile
-import java.lang.IllegalArgumentException
-
-private class Day16
 
 private const val TYPE_LITERAL_VALUE = 4
 
 fun main() {
-    val hexData = getFile(Day16::class, FileType.INPUT).readText()
+    val hexData = getFile(object{}, FileType.INPUT).readText()
     val reader = BinaryReader(hexData)
     var packetVersionSum = 0
     val evaluationResult = reader.evaluatePacket { packetVersion -> packetVersionSum += packetVersion }

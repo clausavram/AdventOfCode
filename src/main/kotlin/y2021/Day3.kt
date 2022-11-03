@@ -4,10 +4,8 @@ import util.FileType
 import util.getFile
 import kotlin.math.pow
 
-class Day3
-
 fun main() {
-    val lines = getFile(Day3::class, FileType.INPUT).readLines()
+    val lines = getFile(object{}, FileType.INPUT).readLines()
 
     partOne(lines)
     partTwo(lines)

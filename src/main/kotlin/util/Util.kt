@@ -1,7 +1,6 @@
 package util
 
 import java.io.File
-import kotlin.reflect.KClass
 
 @Suppress("unused")
 enum class FileType {
@@ -10,6 +9,8 @@ enum class FileType {
     override fun toString() = super.toString().lowercase()
 }
 
-fun getFile(clazz: KClass<*>, fileType: FileType): File {
-    return File(clazz.java.getResource("${clazz.simpleName!!.lowercase()}.$fileType.txt")!!.toURI())
+fun getFile(enclosedObj: Any, fileType: FileType): File {
+    val enclosingClass = enclosedObj.javaClass.enclosingClass
+    val fileName = enclosingClass.simpleName.removeSuffix("Kt").lowercase()
+    return File(enclosingClass.getResource("$fileName.$fileType.txt")!!.toURI())
 }

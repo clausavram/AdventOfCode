@@ -7,7 +7,6 @@ import java.util.stream.Collectors
 import java.util.stream.IntStream
 import kotlin.system.measureTimeMillis
 
-private class Day9
 private data class Pos(val row: Int, val col: Int) {
     override fun toString() = "($row,$col)"
 }
@@ -18,7 +17,7 @@ private val List<List<Int>>.cols: Int
     get() = this[0].size
 
 fun main() {
-    val heightMap = getFile(Day9::class, FileType.INPUT).readLines()
+    val heightMap = getFile(object{}, FileType.INPUT).readLines()
         .map { row -> row.map { char -> char.digitToInt() } }
 
     println("${measureTimeMillis { partOne(heightMap) }} ms")

@@ -4,13 +4,11 @@ import util.FileType
 import util.getFile
 import java.util.*
 
-class Day6
-
 private const val DAYS_TO_SIMULATE_PART_1 = 80
 private const val DAYS_TO_SIMULATE_PART_2 = 256
 
 fun main() {
-    val initialFishSchool = getFile(Day6::class, FileType.INPUT).readText()
+    val initialFishSchool = getFile(object{}, FileType.INPUT).readText()
         .split(',')
         .map { it.toInt() }
 

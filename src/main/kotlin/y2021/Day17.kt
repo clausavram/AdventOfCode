@@ -4,10 +4,8 @@ import util.FileType
 import util.getFile
 import kotlin.math.min
 
-private class Day17
-
 fun main() {
-    val input = getFile(Day17::class, FileType.EXAMPLE).readText()
+    val input = getFile(object{}, FileType.EXAMPLE).readText()
     val regex = Regex("""target area: x=(-?\d+)\.\.(-?\d+), y=(-?\d+)\.\.(-?\d+)""")
     val matchResult = regex.matchEntire(input)!!
     val xMin = matchResult.groups[1]!!.value.toInt()

@@ -2,16 +2,11 @@ package y2021
 
 import util.FileType
 import util.getFile
-import java.util.*
-import kotlin.collections.LinkedHashMap
-import kotlin.collections.LinkedHashSet
-
-class Day12
 
 private class Solution(val caveLinks: MutableList<String>, var smallCaveVisitedTwice: Boolean = false)
 
 fun main() {
-    val caveLinks = getFile(Day12::class, FileType.INPUT).readLines().map { val nodes = it.split('-', limit = 2); nodes[0] to nodes[1] }
+    val caveLinks = getFile(object{}, FileType.INPUT).readLines().map { val nodes = it.split('-', limit = 2); nodes[0] to nodes[1] }
     partOne(caveLinks)
     partTwo(caveLinks)
 }

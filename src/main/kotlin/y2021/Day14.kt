@@ -4,10 +4,8 @@ import util.FileType
 import util.getFile
 import kotlin.system.measureTimeMillis
 
-class Day14
-
 fun main() {
-    val (polymerTemplate, rules) = parseInput(getFile(Day14::class, FileType.INPUT).readLines())
+    val (polymerTemplate, rules) = parseInput(getFile(object{}, FileType.INPUT).readLines())
     println(measureTimeMillis { partOne(polymerTemplate, rules) })
     println(measureTimeMillis { partTwo(polymerTemplate, rules) })
 }

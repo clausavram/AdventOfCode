@@ -4,8 +4,6 @@ import util.FileType
 import util.getFile
 import java.util.*
 
-class Day10
-
 private sealed interface ChunkValidity
 private object Valid : ChunkValidity
 private data class Incomplete(val completionScore: Long) : ChunkValidity
@@ -18,7 +16,7 @@ private val illegalCharScores = mapOf(')' to 3L, ']' to 57L, '}' to 1197L, '>' t
 private val missingCharScores = mapOf(')' to 1L, ']' to 2L, '}' to 3L, '>' to 4L)
 
 fun main() {
-    val navigationChunks = getFile(Day10::class, FileType.INPUT).readLines().map { it.toCharArray() }
+    val navigationChunks = getFile(object{}, FileType.INPUT).readLines().map { it.toCharArray() }
     partOne(navigationChunks)
     partTwo(navigationChunks)
 }

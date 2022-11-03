@@ -4,10 +4,8 @@ import util.FileType
 import util.getFile
 import java.util.regex.Pattern
 
-class Day2
-
 fun main() {
-    val lines = getFile(Day2::class, FileType.INPUT).readLines()
+    val lines = getFile(object{}, FileType.INPUT).readLines()
     partOne(lines)
     partTwo(lines)
 }

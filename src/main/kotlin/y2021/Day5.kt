@@ -5,8 +5,6 @@ import util.Point
 import util.getFile
 import kotlin.math.sign
 
-class Day5
-
 private data class Segment(val start: Point, val end: Point) {
     constructor(start: Pair<Int, Int>, end: Pair<Int, Int>) : this(Point(start.first, start.second), Point(end.first, end.second))
 
@@ -15,7 +13,7 @@ private data class Segment(val start: Point, val end: Point) {
 }
 
 fun main() {
-    val lines = getFile(Day5::class, FileType.INPUT).readLines()
+    val lines = getFile(object{}, FileType.INPUT).readLines()
     val regex = Regex("""(\d+),(\d+) -> (\d+),(\d+)""")
     val segments = lines.map {
         val (x1, y1, x2, y2) = regex.find(it)!!.destructured
