@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.6.0"
+    kotlin("jvm") version "1.7.21"
     java
     id("com.intershop.gradle.javacc") version "4.0.1"
 }

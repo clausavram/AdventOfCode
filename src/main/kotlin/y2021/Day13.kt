@@ -1,18 +1,18 @@
 package y2021
 
 import util.FileType
-import util.Point
+import util.Point2D
 import util.getFile
 
 private enum class Axis { X, Y }
 private data class Fold(val axis: Axis, val coordinate: Int)
-private data class DotsAndFolds(val dots: Set<Point>, val folds: List<Fold>)
+private data class DotsAndFolds(val dots: Set<Point2D>, val folds: List<Fold>)
 
-private fun Point.fold(fold: Fold): Point {
+private fun Point2D.fold(fold: Fold): Point2D {
     return if (fold.axis == Axis.X) {
-        if (this.x < fold.coordinate) this else Point(2 * fold.coordinate - this.x, this.y)
+        if (this.x < fold.coordinate) this else Point2D(2 * fold.coordinate - this.x, this.y)
     } else {
-        if (this.y < fold.coordinate) this else Point(this.x, 2 * fold.coordinate - this.y)
+        if (this.y < fold.coordinate) this else Point2D(this.x, 2 * fold.coordinate - this.y)
     }
 }
 
@@ -24,7 +24,7 @@ fun main() {
 
 private fun parseInput(dotsAndFolds: List<String>): DotsAndFolds {
     val foldRegex = Regex("""fold along ([xy])=(\d+)""")
-    val dots = LinkedHashSet<Point>()
+    val dots = LinkedHashSet<Point2D>()
     val folds = mutableListOf<Fold>()
     var readingDots = true
     for (dotOrFold in dotsAndFolds) {
@@ -34,7 +34,7 @@ private fun parseInput(dotsAndFolds: List<String>): DotsAndFolds {
         }
         if (readingDots) {
             val (x, y) = dotOrFold.split(',')
-            dots += Point(x.toInt(), y.toInt())
+            dots += Point2D(x.toInt(), y.toInt())
         } else {
             val match = foldRegex.matchEntire(dotOrFold)!!
             folds += Fold(Axis.valueOf(match.groups[1]!!.value.uppercase()), match.groups[2]!!.value.toInt())
@@ -57,9 +57,9 @@ private fun partTwo(dotsAndFolds: DotsAndFolds) {
     printDots(foldedDots)
 }
 
-private fun foldDots(dots: Set<Point>, fold: Fold) = dots.mapTo(LinkedHashSet()) { dot -> dot.fold(fold) }
+private fun foldDots(dots: Set<Point2D>, fold: Fold) = dots.mapTo(LinkedHashSet()) { dot -> dot.fold(fold) }
 
-private fun printDots(dots: Collection<Point>) {
+private fun printDots(dots: Collection<Point2D>) {
     val maxX = dots.maxOf { it.x }
     val maxY = dots.maxOf { it.y }
     val xToY = dots.groupBy { it.y }.mapValues { entry -> entry.value.map { dot -> dot.x }.toSet() }

@@ -1,12 +1,12 @@
 package y2021
 
 import util.FileType
-import util.Point
+import util.Point2D
 import util.getFile
 import kotlin.math.sign
 
-private data class Segment(val start: Point, val end: Point) {
-    constructor(start: Pair<Int, Int>, end: Pair<Int, Int>) : this(Point(start.first, start.second), Point(end.first, end.second))
+private data class Segment(val start: Point2D, val end: Point2D) {
+    constructor(start: Pair<Int, Int>, end: Pair<Int, Int>) : this(Point2D(start.first, start.second), Point2D(end.first, end.second))
 
     val vector = end - start
     override fun toString(): String = "$start -> $end"
@@ -27,9 +27,9 @@ fun main() {
 }
 
 private fun countOverlappingPoints(segments: List<Segment>) {
-    val diagram = mutableMapOf<Point, Int>()
+    val diagram = mutableMapOf<Point2D, Int>()
     for (segment in segments) {
-        val step = Point(segment.vector.x.sign, segment.vector.y.sign)
+        val step = Point2D(segment.vector.x.sign, segment.vector.y.sign)
         var previousPoint = segment.start
         diagram.compute(previousPoint) { _, old -> (old ?: 0) + 1 }
         while (previousPoint != segment.end) {

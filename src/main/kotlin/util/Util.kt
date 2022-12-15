@@ -11,6 +11,8 @@ enum class FileType {
 
 fun getFile(enclosedObj: Any, fileType: FileType): File {
     val enclosingClass = enclosedObj.javaClass.enclosingClass
-    val fileName = enclosingClass.simpleName.removeSuffix("Kt").lowercase()
-    return File(enclosingClass.getResource("$fileName.$fileType.txt")!!.toURI())
+    val fileNameBase = enclosingClass.simpleName.removeSuffix("Kt").lowercase()
+    val fileName = "$fileNameBase.$fileType.txt"
+    val url = enclosingClass.getResource(fileName) ?: throw IllegalArgumentException("file '$fileName' not found")
+    return File(url.toURI())
 }
