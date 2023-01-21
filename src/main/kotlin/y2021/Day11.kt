@@ -12,7 +12,7 @@ fun main() {
     partTwo(energyMap.copy())
 }
 
-private fun partOne(energyMap: Map2D) {
+private fun partOne(energyMap: Map2D<Int>) {
     val daysCount = 100
     val totalFlashCount = (1..daysCount).sumOf {
         val flashes = advanceOneDay(energyMap)
@@ -22,7 +22,7 @@ private fun partOne(energyMap: Map2D) {
     println("Part 1: total flash count after $daysCount: $totalFlashCount")
 }
 
-private fun partTwo(energyMap: Map2D) {
+private fun partTwo(energyMap: Map2D<Int>) {
     var currentDay = 0
     while (true) {
         currentDay++
@@ -34,7 +34,7 @@ private fun partTwo(energyMap: Map2D) {
     }
 }
 
-private fun advanceOneDay(energyMap: Map2D): Int {
+private fun advanceOneDay(energyMap: Map2D<Int>): Int {
     // increment each cell in the map => some octopuses may flash
     var todayFlashCount = 0
     val unhandledFlashedLocations = LinkedList<Pair<Int, Int>>()

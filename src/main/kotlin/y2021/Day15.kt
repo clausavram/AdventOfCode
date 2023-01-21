@@ -13,12 +13,12 @@ fun main() {
     println("Took ${measureTimeMillis { partTwo(riskMap) }} ms")
 }
 
-private fun partOne(riskMap: Map2D) {
+private fun partOne(riskMap: Map2D<Int>) {
     val finalCost = findAStarCost(riskMap)
     println("Part 1: cost of start -> finish = $finalCost")
 }
 
-private fun partTwo(inputMap: Map2D) {
+private fun partTwo(inputMap: Map2D<Int>) {
     val enlargedRiskMap = Map2D.withValues(inputMap.rows * 5, inputMap.cols * 5) { row, col ->
         (inputMap[row % inputMap.rows, col % inputMap.cols] + row / inputMap.rows + col / inputMap.cols - 1) % 9 + 1
     }
@@ -27,7 +27,7 @@ private fun partTwo(inputMap: Map2D) {
     println("Part 2: cost of start -> finish = $finalCost")
 }
 
-private fun findAStarCost(riskMap: Map2D): Int {
+private fun findAStarCost(riskMap: Map2D<Int>): Int {
     // heuristic = manhattan distance
     val heuristic: (Coord2D, Coord2D) -> Int = { a: Coord2D, b: Coord2D -> abs(a.row - b.row) + abs(a.col - b.col) }
 
