@@ -65,16 +65,15 @@ class Map2D<T>(private val underlyingArray: Array<T>, val rows: Int, val cols: I
     }
 }
 
-
-@JvmInline
-value class Coord2D(private val rowAndCol: Long) {
+//@JvmInline
+data class Coord2D(private val rowAndCol: Long) {
     val row: Int
         get() = rowAndCol.shr(Int.SIZE_BITS).toInt()
     val col: Int
         get() = rowAndCol.toInt()
 
-    override fun toString(): String {
-        return "($row, $col)"
-    }
+    operator fun plus(that: Coord2D): Coord2D = this.row + that.row by this.col + that.col
+    override fun toString(): String = "($row, $col)"
 }
-infix fun Int.by(col: Int) = Coord2D(this.toLong().shl(Int.SIZE_BITS).or(col.toLong()))
+
+infix fun Int.by(col: Int) = Coord2D(this.toLong().shl(Int.SIZE_BITS).or(col.toLong().and((-1L).ushr(Int.SIZE_BITS))))
