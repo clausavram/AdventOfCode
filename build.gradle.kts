@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.8.10"
+    kotlin("jvm") version "2.2.20"
     java
     id("com.intershop.gradle.javacc") version "4.0.1"
 }
@@ -13,12 +13,6 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-}
-
-tasks.getByName<Test>("test") {
-    useJUnitPlatform()
 }
 
 javacc {
